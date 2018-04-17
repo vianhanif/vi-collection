@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router';
 import config from '../../../config'
 import Helmet from 'react-helmet';
 
@@ -10,7 +9,7 @@ const defaultImage = `${defaultUrl}/images/logo.jpg`;
 const defaultTwitter = config.meta.twitter;
 const defaultSep = config.meta.title.separator;
 
-class Page extends Component {
+class Meta extends Component {
   getMetaTags(
     {
       title,
@@ -22,7 +21,8 @@ class Page extends Component {
       published,
       updated,
       category,
-      tags
+      tags,
+      location
     },
     pathname
   ) {
@@ -102,4 +102,8 @@ class Page extends Component {
   }
 }
 
-export default withRouter(Page);
+Meta.defaultProps = {
+  location: window.location
+}
+
+export default Meta
